@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +6,8 @@
     <title>Document</title>
     <style>
         .campo{
-            background-color: yellow
-            border:5px solid white;
+            background-color: yellow;
+            border:5px solid green;
         }
         .botao{
             width:5%;
@@ -44,11 +42,11 @@
             document.getElementById("campo").value = "";
         }
         function calcular(){
-            documennt.getElementById("campo");
+            var campo = document.getElementById("campo");
             try{
-                campo.value = eval(campo.value);
+               campo.value = eval(campo.value); 
             }catch(error){
-                 campo.value ="Erro";
+                campo.value ="Erro";
             }
         }
     </script>

@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,8 @@
     <title>Document</title>
     <style>
         .campo{
-            background-color: yellow;
-            border:5px solid green;
+            background-color: yellow
+            border:5px solid white;
         }
         .botao{
             width:5%;
@@ -42,6 +43,14 @@
         function limpar(){
             document.getElementById("campo").value = "";
         }
+        function calcular(){
+            documennt.getElementById("campo");
+            try{
+                campo.value = eval(campo.value);
+            }catch(error){
+                 campo.value ="Erro";
+            }
+        }
     </script>
 </head>
 <body>
@@ -66,15 +75,14 @@
         <button onclick="adicionar('+')" class="botao2">+</button>
         <button onclick="adicionar(')')" class="botao2">)</button>
         <br>
-        <button onclick="adicionar('*')" class="botao2">*</button>
+        <button onclick="adicionar('.')" class="botao2">.</button>
         <button onclick="adicionar('0')" class="botao">0</button>
-        <button onclick="adicionar('#')" class="botao2">#</button>
+        <button onclick="adicionar(',')" class="botao2">,</button>
         <button onclick="adicionar('-')" class="botao2">-</button>
         <button onclick="adicionar('%')" class="botao2">%</button>
         <br>
         <button onclick="limpar()" class="botao3">C</button>
-        <button onclick="adicionar('=')" class="botao4">=</button>
+        <button onclick="calcular()" class="botao4">=</button>
     </fieldset>
 </body>
 </html>
-

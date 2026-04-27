@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Impostos Corporativos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper span.prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-weight: 600;
+        }
+
+        .input-wrapper span.suffix {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-weight: 600;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px 14px 42px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        input.percent-input {
+            padding-left: 16px;
+            padding-right: 36px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2c5364;
+        }
+
+        .btn-calcular {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2c5364, #203a43);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-calcular:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 83, 100, 0.4);
+        }
+
+        .btn-calcular:active {
+            transform: translateY(0);
+        }
+
+        .resultado {
+            display: none;
+            margin-top: 28px;
+            padding: 24px;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border-radius: 14px;
+            border-left: 5px solid #2e7d32;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .resultado h2 {
+            color: #2e7d32;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .resultado-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .resultado-item:last-child {
+            border-bottom: none;
+        }
+
+        .resultado-item.destaque {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            padding-top: 14px;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            border-bottom: none;
+            margin-top: 6px;
+        }
+
+        .resultado-item.lucro {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2e7d32;
+            padding-top: 10px;
+            border-bottom: none;
+        }
+
+        .dica {
+            display: none;
+            margin-top: 18px;
+            padding: 16px 18px;
+            background: #fff8e1;
+            border-radius: 10px;
+            border-left: 4px solid #f9a825;
+            font-size: 0.88rem;
+            color: #5d4037;
+            line-height: 1.5;
+            animation: slideIn 0.5s ease;
+        }
+
+        .dica strong {
+            color: #e65100;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.78rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>💰 Calculadora de Impostos</h1>
+        <p>Simule os impostos da sua empresa e maximize seu lucro</p>
+    </div>
+
+    <div class="form-group">
+        <label for="faturamento">Faturamento Mensal</label>
+        <div class="input-wrapper">
+            <span class="prefix">R$</span>
+            <input type="text" id="faturamento" placeholder="Ex: 500.000,00">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="aliquota">Alíquota de Imposto (%)</label>
+        <div class="input-wrapper">
+            <input type="text" id="aliquota" class="percent-input" placeholder="Ex: 15">
+            <span class="suffix">%</span>
+        </div>
+    </div>
+
+    <button class="btn-calcular" onclick="calcular()">Calcular Imposto</button>
+
+    <div class="resultado" id="resultado">
+        <h2>📊 Resultado</h2>
+        <div class="resultado-item">
+            <span>Faturamento Mensal</span>
+            <span id="res-faturamento">-</span>
+        </div>
+        <div class="resultado-item">
+            <span>Alíquota Aplicada</span>
+            <span id="res-aliquota">-</span>
+        </div>
+        <div class="resultado-item destaque">
+            <span>Imposto a Pagar</span>
+            <span id="res-imposto">-</span>
+        </div>
+        <div class="resultado-item lucro">
+            <span>Lucro Líquido (após imposto)</span>
+            <span id="res-lucro">-</span>
+        </div>
+    </div>
+
+    <div class="dica" id="dica"></div>
+
+    <div class="footer">
+        Calculadora de Impostos Corporativos &copy; 2026
+    </div>
+</div>
+
+<script>
+    const faturamentoInput = document.getElementById('faturamento');
+    faturamentoInput.addEventListener('input', function(e) {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length === 0) { e.target.value = ''; return; }
+        v = (parseInt(v) / 100).toFixed(2);
+        v = v.replace('.', ',');
+        let parts = v.split(',');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        e.target.value = parts.join(',');
+    });
+
+    function parseBRL(str) {
+        if (!str) return 0;
+        return parseFloat(str.replace(/\./g, '').replace(',', '.')) || 0;
+    }
+
+    function formatBRL(num) {
+        return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function gerarDica(aliquota, faturamento) {
+        const dicas = [];
+        if (aliquota > 20) {
+            dicas.push('Com alíquota acima de 20%, considere avaliar se o <strong>Lucro Presumido</strong> ou <strong>Simples Nacional</strong> pode ser mais vantajoso para o seu perfil.');
+        }
+        if (faturamento > 1000000) {
+            dicas.push('Para faturamentos acima de R$ 1 milhão/mês, estratégias como <strong>planejamento tributário</strong> e <strong>incentivos fiscais regionais</strong> podem reduzir significativamente a carga tributária.');
+        }
+        if (faturamento > 0 && faturamento <= 400000) {
+            dicas.push('Empresas nessa faixa de faturamento podem se beneficiar do <strong>Simples Nacional</strong>, com alíquotas reduzidas e simplificação fiscal.');
+        }
+        if (aliquota >= 10 && aliquota <= 15) {
+            dicas.push('Você sabia? Algumas atividades permitem <strong>créditos de PIS/COFINS</strong> que podem reduzir a base de cálculo efetiva do imposto.');
+        }
+        dicas.push('💡 <strong>Dica Pro:</strong> Consulte um contador especializado para garantir que sua empresa está no regime tributário mais econômico. Pequenos ajustes podem gerar grandes economias ao longo do ano.');
+        return dicas.join('<br><br>');
+    }
+
+    function calcular() {
+        const faturamento = parseBRL(faturamentoInput.value);
+        const aliquotaStr = document.getElementById('aliquota').value.replace(',', '.');
+        const aliquota = parseFloat(aliquotaStr);
+
+        if (faturamento <= 0 || isNaN(faturamento)) {
+            alert('Por favor, insira um faturamento válido.');
+            return;
+        }
+        if (isNaN(aliquota) || aliquota < 0 || aliquota > 100) {
+            alert('Por favor, insira uma alíquota válida (0-100%).');
+            return;
+        }
+
+        const imposto = faturamento * (aliquota / 100);
+        const lucro = faturamento - imposto;
+
+        document.getElementById('res-faturamento').textContent = formatBRL(faturamento);
+        document.getElementById('res-aliquota').textContent = aliquota.toFixed(2) + '%';
+        document.getElementById('res-imposto').textContent = formatBRL(imposto);
+        document.getElementById('res-lucro').textContent = formatBRL(lucro);
+
+        document.getElementById('resultado').style.display = 'block';
+
+        const dicaEl = document.getElementById('dica');
+        dicaEl.innerHTML = gerarDica(aliquota, faturamento);
+        dicaEl.style.display = 'block';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') calcular();
+    });
+</script>
+
+</body>
+</html>

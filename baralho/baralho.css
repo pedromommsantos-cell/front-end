@@ -3,7 +3,7 @@
   height: 100px ;
   border-radius: 10px;
   border: 1px solid black;
-  display: flex;
+  display: inline-block;
 }
 .linha2{
 

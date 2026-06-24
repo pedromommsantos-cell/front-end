@@ -1,11 +1,21 @@
-.linha1, .linha2, .linha3 {
-    display: flex;
-    gap: 20px;
-    margin-top:20px;
-} 
-.carta { 
-    width: 100px; 
-    height: 140px; 
-    border: 1px solid black; 
-    display: flex;
+body{
+    width: 1000px;
+    height: 600px;
+    background-color: aqua;
+}
+.linha1, .linha2, .linha3{
+    width: 100% ;
+    height: 33%;
+    background-color: pink ;
+    margin-top: 0.3%;
+    flex-direction: row;
+}
+.linha11, .linha12, .linha13, .linha14, .linha15, .linha21, .linha22, .linha23, .linha24,.linha25, .linha31, .linha32, .linha33, .linha34, .linha35{
+    width: 18%;
+    height: 100%;
+    background-color: chartreuse ;
+    margin-left: 1.5%;
+    float: left ;
+    display: inline ;
+    flex-direction: row;
 }

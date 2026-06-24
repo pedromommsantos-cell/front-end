@@ -19,3 +19,15 @@ body{
     display: inline ;
     flex-direction: row;
 }
+.cima,  .baixo,  .foto{
+    display: inline;
+    float: left;
+}
+.cima,  .baixo{
+    width: 10%;
+    height: 10%;
+}
+.foto{
+    width: 80%;
+    height: 80%;
+}

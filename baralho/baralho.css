@@ -30,4 +30,19 @@ body{
 .foto{
     width: 80%;
     height: 80%;
+    margin-top: 10%;
+}
+.baixo{
+    margin-top: 10%;
+    font-family: arial;
+    font-size: 100%;
+    font-weight: bold;
+    color: red;
+}
+.cima{
+    margin-top: -1%;
+     font-family: arial;
+    font-size: 100%;
+    font-weight: bold;
+    color: red;
 }

@@ -19,30 +19,21 @@ body{
     display: inline ;
     flex-direction: row;
 }
-.cima,  .baixo,  .foto{
+.cima, .baixo, .foto{
     display: inline;
     float: left;
 }
-.cima,  .baixo{
+.cima, .baixo{
     width: 10%;
     height: 10%;
 }
 .foto{
-    width: 80%;
+    width:80% ;
     height: 80%;
-    margin-top: 10%;
 }
 .baixo{
-    margin-top: 10%;
-    font-family: arial;
-    font-size: 100%;
-    font-weight: bold;
-    color: red;
+    margin-top: 90%;
 }
 .cima{
     margin-top: -1%;
-     font-family: arial;
-    font-size: 100%;
-    font-weight: bold;
-    color: red;
 }

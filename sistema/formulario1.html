@@ -1,267 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha de Cadastro do Aluno</title>
+    <title>Document</title>
     <style>
-        body{
-            background-color: aliceblue;
-            font-family: Arial;
-        }
-        header{
-            text-align: center;
-        }
-        .site{
-            width: 900px;
-            background-color: white;
-            margin: auto;
-            padding: 20px;
-        }
-        label{
-            display: block;
-            font-size: 13px;
-        }
-        input{
-            width: 100%;
-            box-sizing: border-box;
-            background-color: rgb(203, 203, 233);
-        }
-        select{
-            width: 100%;
-            box-sizing: border-box;
-            background-color: rgb(203, 203, 233);
-        }
-        textarea{
-            width: 100%;
-            height: 70px;
-            box-sizing: border-box;
-            background-color: rgb(203, 203, 233);
-        }
-        fieldset{
-            border: none;
-            padding: 0;
-        }
-        .campo{
-            display: inline-block;
-            margin-right: 1%;
-            margin-bottom: 8px;
-        }
-        .p15{
-            width: 15%;
-        }
-        .p20{
-            width: 20%;
-        }
-        .p25{
-            width: 25%;
-        }
-        .p30{
-            width: 30%;
-        }
-        .p35{
-            width: 35%;
-        }
-        .p40{
-            width: 40%;
-        }
-        .p45{
-            width: 45%;
-        }
-        .p80{
-            width: 80%;
-        }
-        .botoes{
-            text-align: right;
-        }
-        .salvar{
-            background-color: rgb(26, 115, 201);
-            color: white;
-        }
+      .site{
+        width:1200px;
+        height:600px;
+        background-color: rgb(234, 187, 129);
+      }
+      .linha1{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha2{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha3{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha4{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha5{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha6{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha7{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha8{
+        flex-direction:row;
+        display:flex;
+      }
+      .linha9{
+        flex-direction:row;
+        display:flex;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
     </style>
 </head>
 <body>
-    <header></header>
-
-    <main>
     <div class="site">
-        <header>
-            <h2>Universidade Nova Estrela</h2>
-            <h1>FICHA DE CADASTRO DO ALUNO</h1>
-            <p>Instituição de Ensino Superior</p>
-        </header>
-
         <fieldset>
-            <legend>
-                DADOS PESSOAIS
-            </legend>
-
+          <legend>DADOS PESSOAIS</legend>
         <div class="linha1">
-            <div class="campo p80">
-                <label>Nome Completo:</label>
-                <input type="text" value="Felipe Almeida Santos">
-            </div>
-            <div class="campo p15">
-                <label>Sexo:</label>
-                <select>
-                    <option>Masculino</option>
-                    <option>Feminino</option>
-                    <option>Transforms</option>
-                </select>
-            </div>
+            <label>Nome Completo:<input type="text"></label>
+            <label>Sexo:
+            <select>
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Outros</option>
+            </select>
+            </label>
         </div>
         <div class="linha2">
-            <div class="campo p15">
-                <label>Data de Nascimento:</label>
-                <input type="text" value="15/03/2005">
-            </div>
-            <div class="campo p30">
-                <label>CPF:</label>
-                <input type="text" value="123.456.789-00">
-            </div>
-            <div class="campo p25">
-                <label>RG:</label>
-                <input type="text" value="34.567.890-X">
-            </div>
-            <div class="campo p20">
-                <label>Nacionalidade:</label>
-                <input type="text" value="Brasileira">
-            </div>
+            <label>Data de Nascimento:<input type="date"></label>
+            <label>CPF:<input type="text"></label>
+            <label>RG:<input type="text"></label>
+            <label>Nacionalidade:<input type="text"></label>
         </div>
         <div class="linha3">
-            <div class="campo p45">
-                <label>E-mail:</label>
-                <input type="email" value="felipe.santos@email.com">
-            </div>
-            <div class="campo p25">
-                <label>Telefone Celular:</label>
-                <input type="text" value="(11) 98765-4321">
-            </div>
-            <div class="campo p20">
-                <label>Telefone Residencial:</label>
-                <input type="text" value="(11) 3456-7890">
-            </div>
+          <label>Email:<input type="email"></label>
+          <label>Telefone Celular:<input type="number"></label>
+          <label>Telefone Residencial:<input type="number"></label>
         </div>
         </fieldset>
-
         <fieldset>
-            <legend>
-                DADOS DE ENDEREÇO
-            </legend>
-
+          <legend>DADOS DE ENDEREÇO</legend>
         <div class="linha4">
-            <div class="campo p15">
-                <label>CEP:</label>
-                <input type="text" value="01310-200">
-            </div>
-            <div class="campo p35">
-                <label>Logradouro:</label>
-                <input type="text" value="Avenida Paulista">
-            </div>
-            <div class="campo p15">
-                <label>Número:</label>
-                <input type="text" value="1578">
-            </div>
-            <div class="campo p25">
-                <label>Complemento:</label>
-                <input type="text" value="Apto 52">
-            </div>
+          <label>CEP:<input type="number"></label>
+          <label>Logradouro:<input type="text"></label>
+          <label>Numero:<input type="number"></label>
+          <label>Complemento:<input type="text"></label>
         </div>
         <div class="linha5">
-            <div class="campo p35">
-                <label>Bairro:</label>
-                <input type="text" value="Bela Vista">
-            </div>
-            <div class="campo p35">
-                <label>Cidade:</label>
-                <input type="text" value="São Paulo">
-            </div>
-            <div class="campo p20">
-                <label>Estado:</label>
-                <select>
-                    <option>SP</option>
-                    <option>MG</option>
-                    <option>RJ</option>
-                    <option>MS</option>
-                    <option>MT</option>
-                    <option>SC</option>
-                    <option>RS</option>
-                    <option>PR</option>
-                </select>
-            </div>
+          <label>Bairro:<input type="text"></label>
+          <label>Cidade:<input type="text"></label>
+          <label>Estado:<select>
+            <option>SP</option>
+          </select>
         </div>
         </fieldset>
-
         <fieldset>
-            <legend>
-                DADOS ACADÊMICOS
-            </legend>
-
+          <legend>DADOS ACADEMICOS</legend>
         <div class="linha6">
-            <div class="campo p35">
-                <label>Curso:</label>
-                <input type="text" value="Engenharia de Software">
-            </div>
-            <div class="campo p15">
-                <label>Matrícula (RA):</label>
-                <input type="text" value="202410345">
-            </div>
-            <div class="campo p40">
-                <label>Ano/Semestre Ingresso:</label>
-                <input type="text" value="2024 / 1º Semestre">
-            </div>
+          <label>Curso:<input type="text"></label>
+          <label>Matricula (RA):<input type="number"></label>
+          <label>Ano/Semestre Ingresso:<input type="text"></label>
         </div>
         <div class="linha7">
-            <div class="campo p25">
-                <label>Modalidade:</label>
-                <select>
-                    <option>Presencial</option>
-                    <option>Semi-presencial</option>
-                    <option>Home-office</option>
-                </select>
-            </div>
-            <div class="campo p25">
-                <label>Turno:</label>
-                <select>
-                    <option>Manhã</option>
-                    <option>Tarde</option>
-                    <option>Noite</option>
-                </select>
-            </div>
-            <div class="campo p40">
-                <label>Escolaridade Anterior:</label>
-                <input type="text" value="Ensino Médio Completo">
-            </div>
+          <label>Modalidade:<select>
+            <option>Presencial</option>
+          </select></label>
+          <label>Turno<select>
+            <option>Manha</option>
+          </select></label>
+          <label>Escolaridade Anterior<input type="text"></label>
         </div>
         </fieldset>
-
         <fieldset>
-            <legend>
-                DADOS DO RESPONSÁVEL
-            </legend>
-
+          <legend>DADOS DO RESPONSAVEL</legend>
         <div class="linha8">
-            <div class="campo p45">
-                <label>Nome do Responsável:</label>
-                <input type="text" value="Maria Almeida Santos">
-            </div>
-            <div class="campo p45">
-                <label>CPF do Responsável:</label>
-                <input type="text" value="456.789.123-01">
-            </div>
+          <label>Nome do Responsavel:<input type="text"></label>
+          <label>CPF do responsavel<input type="text"></label>
         </div>
         <div class="linha9">
-            <label>Observações:</label>
-            <textarea>Aluno com necessidade de acompanhamento em Português.</textarea>
+          <label>Observaçoes:<textarea></textarea></label>
         </div>
         </fieldset>
-
-        <div class="botoes">
-            <button>CANCELAR</button>
-            <button class="salvar">SALVAR CADASTRO</button>
-        </div>
     </div>
-    </main>
-    <footer></footer>
 </body>
 </html>
